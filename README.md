@@ -42,34 +42,27 @@ In order to get the data on the storage, perform the following steps in order
 
 - Step 1: Import Necessary Libraries
 - Step 2: Load the Data and Understanding the Data
-- Step 3: Data Preparation Steps - Train-Validation Split and Test Set
-- Step 4: Building the Initial Model (Model 1)
-- Step 5: Data Augmentation - Build Model after Applying Augmentation
-- Step 6: Fix Class Imbalance and Build the Model
-- Step 7: Fine-tune and Optimize the Model
+- Step 3: Data Preparation Steps - Train-Validation Split and Test Set - Geneartor 
+- Step 4: Identify parameters and hyperparameters
+- Step 5: Conv3D model
+- Step 6: CNN and RNN model
+- Step 7: Transfer Learning imagenet and RNN model
 - Step 8: Making Predictions Using the Models
 - Step 9: Conclusion
   
 ## Technologies/Libraries Used
 - numpy : 1.26.4
-- pandas : 2.2.2
 - matplotlib : 3.7.1
 - tensorflow : 2.17.0
 - keras : 3.4.1
-- augmentor : 0.2.12
 
 ## Conclusions
-**Based on the model comparison and evaluation, the following insights can be drawn: -**
-- Model 8 (Base Model + Augmented Layers + Balanced Class + Controlled LR + More Layers + Less Dropouts) achieved the best overall performance with the highest validation accuracy (0.68) and test accuracy (0.47). This suggests that optimizing dropout rates and balancing the class distribution improves model generalization.
-- Model 4 (Base Model + Augmented Layers + Balanced Class + Controlled LR) and Model 5 (Base Model + Augmented Layers + Balanced Class + Increased / Controlled LR) both show competitive results, with test accuracies of 0.43. These models effectively address class imbalance and fine-tune the learning rate.
-- Model 6 (Base Model + Augmented Layers + Balanced Class + Controlled LR + More Epochs) achieved better training accuracy (0.65) but slightly lower test accuracy (0.42), indicating potential overfitting as the model learned too well on the training data.
-- Base Models (1, 2, 3) show lower test accuracies, especially Model 1 which had high training accuracy (0.84) but low generalization on the test set (0.31), demonstrating severe overfitting without any regularization techniques.
-- Overall, applying data augmentation, class balancing, learning rate control, dropout optimization, and deeper architectures significantly enhanced the performance of the CNN models for melanoma detection, with Model 8 emerging as the most balanced in terms of validation and test performance. Further optimization could continue to improve this performance.
+Based on the experiments, Approach 3 - Experiment 6 (MobileNetV2 with transfer learning) appears to be the optimal choice for the final model. It offers a well-balanced trade-off between accuracy, loss, and computational efficiency:
 
-**Q :- Which class has the least number of samples?
-Answer - seborrheic keratosis has the least number of samples - 77
-**Q :- Which classes dominate the data in terms proportionate number of samples?
-Answer - pigmented benign keratosis dominates the data in terms proportionate number of samples - 462
+  - High Accuracy and Low Loss: This approach achieved the best results, with a maximum training accuracy of 0.96, maximum validation accuracy of 0.88, minimum training loss of 0.12, and minimum validation loss of 0.21 .
+  - Moderate Parameters: By freezing the initial 100 layers of MobileNetV2, the model maintains a manageable parameter count while effectively leveraging transfer learning.
+  - Efficient Training Time: Global Average Pooling reduces the feature size, resulting in faster training without sacrificing performance.
+Future Work and Improvements: Further experimentation could involve adjusting frame dimensions or exploring more efficient CNN backbones. Testing the model on larger datasets or in real-time scenarios could also enhance robustness and practical applicability.
 
 
 
@@ -82,10 +75,9 @@ Answer - pigmented benign keratosis dominates the data in terms proportionate nu
 ## Glossary
 
 - Data Augmentation
-- Class Imbalance
-- Train-Validation Split
-- Test Set
 - Convolutional Neural Network (CNN)
+- RNN
+- Transfer Learning using Imagenet
 - Dropout
 - Learning Rate (LR)
 - Overfitting
