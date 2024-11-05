@@ -51,10 +51,10 @@ In order to get the data on the storage, perform the following steps in order
 - Step 9: Conclusion
   
 ## Technologies/Libraries Used
-- numpy : 1.26.4
-- matplotlib : 3.7.1
-- tensorflow : 2.17.0
-- keras : 3.4.1
+- Python: 3.10.12 (main, Sep 11 2024, 15:47:36) [GCC 11.4.0]
+- NumPy: 1.26.4
+- TensorFlow: 2.17.0
+- Keras: 3.4.1
 
 ## Conclusions
 Based on the experiments, Approach 3 - Experiment 6 (MobileNetV2 with transfer learning) appears to be the optimal choice for the final model. It offers a well-balanced trade-off between accuracy, loss, and computational efficiency:
